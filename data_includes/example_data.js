@@ -1,27 +1,10 @@
 // This tells Ibex you will send the results early
 var manualSendResults = true;
 var showProgressBar = true;
-var shuffleSequence = seq("consent","instructions","prepractice",startsWith("Practice"),"balance","scaleinstr","distract",randomize("experiment-first"),randomize("experiment"),
-                            "feedback","send","confirmation");
-// rshuffle(startsWith("experiment")),rshuffle(startsWith("experiment"))
+var shuffleSequence = seq("consent","instructions","prepractice",startsWith("Practice"),"balance","scaleinstr","distract",randomize("experiment-first"),randomize("experiment"),"inter","feedback1","feedback2","feedback3","send","debrief");
 PennController.ResetPrefix(null);
 
 
-// keyButton = function(id, text, wait){
-//     let btn = newButton("btn"+id, text)
-//             .print();
-//     let selector = newSelector("sel"+id)
-//                         .settings.add( getButton("btn"+id) )
-//                         .settings.keys( " " );
-//     if (wait)
-//         selector = selector
-//                         .wait( wait );
-//     return [
-//         btn
-//         ,
-//         selector
-//     ];
-// }
 
 var items = [
 
@@ -32,13 +15,6 @@ var items = [
             .settings.log()
             .print()
         ,
-        // keyButton("consentBtn", "I consent to take this experiment",
-        //     getHtml("consent").test.complete()
-        //         .failure(
-        //             getHtml("consent").warn(),
-        //             getSelector("selconsentBtn").unselect()
-        //         )
-        // )
         newButton("consent btn", "I consent to take this experiment")
             .print()
             .wait( getHtml("consent").test.complete().failure( getHtml("consent").warn() ) )
@@ -51,7 +27,6 @@ var items = [
         newButton("continue btn", "Click for more instructions.")
             .print()
             .wait()
-//            .wait( getHtml("instructions form").test.complete().failure(getHtml("instructions form").warn()) )
     )]
     ,
     ["prepractice", "PennController", PennController(
@@ -148,9 +123,9 @@ var items = [
     )]                     
 ];
 
-PennController.GetTable( "datasource-however_v5.csv" ).setLabel("Expt");
+PennController.GetTable( "datasource-however.csv" ).setLabel("Expt");
 
-PennController.FeedItems( PennController.GetTable( "datasource-however_v5.csv" ).filter("ExptType","Practice"),
+PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).filter("ExptType","Practice"),
     (item) => PennController(
         newFunction("isGood", function(){ return item.Expt=="Practice-good"; })
         ,
@@ -221,7 +196,7 @@ PennController.FeedItems( PennController.GetTable( "datasource-however_v5.csv" )
     )
 );
 
-PennController.FeedItems( PennController.GetTable( "datasource-however_v5.csv" ).filter("Expt","experiment-first"),
+PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).filter("Expt","experiment-first"),
     (item) => PennController(
         newTimer("blank", 1000)
             .start()
@@ -291,7 +266,7 @@ PennController.FeedItems( PennController.GetTable( "datasource-however_v5.csv" )
     .log( "ID" , PennController.GetURLParameter("id") )     
 );
 
-PennController.FeedItems( PennController.GetTable( "datasource-however_v5.csv" ).filter("Expt","experiment"),
+PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).filter("Expt","experiment"),
     (item) => PennController(
         newTimer("blank", 1000)
             .start()
