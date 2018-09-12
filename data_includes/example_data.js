@@ -134,7 +134,7 @@ PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).fi
         newCanvas("stimbox", 730, 120)
             .settings.add(25,25,
                 newText("context",
-                    "Imagine that you're at the gym, and you happen to overhear the following bit of someone's conversation:")
+                    "Imagine that you're at a party, and you overhear part of a conversation between two of your friends:")
                     .settings.size(700, 30)
             )    
             .settings.add(25,70,
@@ -210,7 +210,7 @@ PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).fi
         newCanvas("stimbox", 730, 120)
             .settings.add(25,25,
                 newText("context",
-                    "Imagine that you're at the gym, and you happen to overhear the following bit of someone's conversation:")
+                    "Imagine that you're at a party, and you overhear part of a conversation between two of your friends:")
                     .settings.size(700, 30)
             )   
             .settings.add(25,70,
@@ -280,7 +280,7 @@ PennController.FeedItems( PennController.GetTable( "datasource-however.csv" ).fi
         newCanvas("stimbox", 730, 120)
             .settings.add(25,25,
                 newText("context",
-                    "Imagine that you're at the gym, and you happen to overhear the following bit of someone's conversation:")
+                    "Imagine that you're at a party, and you overhear part of a conversation between two of your friends:")
                     .settings.size(700, 30)
             )   
             .settings.add(25,70,
